@@ -1,2 +1,2 @@
 # tools
-Various to enhance your interaction with DivvyCloud
+Various tools to enhance your interaction with DivvyCloud
