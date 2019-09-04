@@ -38,6 +38,19 @@ AWS Sales Account | 014578312761 | AWS | 1157 | 2016-03-29 16:31:48
 DivvyCloud QA RO | 050283019178 | AWS | 3692 | 2016-03-30 17:09:27    
 Acme Corp Development | 212860832355 | AWS | 448 | 2016-04-05 14:52:24    
   
+## list_dns_records.py  
+Script to list all DNS records seen in DivvyCloud and then output to a CSV. 
+Sample output:  
+domain	account_name	account_id	cloud	is_private	record_name	record_type	record_data  
+divvycloud.net.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-47.awsdns-05.com.  
+divvycloud.net.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-1570.awsdns-04.co.uk.  
+divvycloud.net.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-1004.awsdns-61.net.  
+divvycloud.net.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-1074.awsdns-06.org.  
+divvycloud.net.	AWS Sales Account	14578312421	AWS	FALSE		SOA	ns-1570.awsdns-04.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400  
+testsupport.com.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-1935.awsdns-49.co.uk.  
+testsupport.com.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-186.awsdns-23.com.  
+testsupport.com.	AWS Sales Account	14578312421	AWS	FALSE		NS	ns-1040.awsdns-02.org.  
+
 ## list_insights.py  
 Script to list all pre-canned insights by cloud.   
 Sample output:    
