@@ -59,26 +59,27 @@ for region in regions:
         dynamodb_table_list.append(table + " , " + region)
         print(table + " , " + region)
 
-    ## ElasticSearch
-    print("### Starting ElasticSearch List for region: " + region + " ###")
-    elasticsearchclient = boto3.client('es', region_name=region)
-    response = elasticsearchclient.list_domain_names()
-    for domain in response["DomainNames"]:
-        elasticsearch_domain_list.append(domain['DomainName'] + " , " + region)
-        print(domain['DomainName'] + " , " + region)
+# No longer a billable resource
+    # ## ElasticSearch
+    # print("### Starting ElasticSearch List for region: " + region + " ###")
+    # elasticsearchclient = boto3.client('es', region_name=region)
+    # response = elasticsearchclient.list_domain_names()
+    # for domain in response["DomainNames"]:
+    #     elasticsearch_domain_list.append(domain['DomainName'] + " , " + region)
+    #     print(domain['DomainName'] + " , " + region)
 
-
-    ## Workspaces
-    workspaces_regions = ["us-east-1","us-west-2","ap-northeast-2","ap-southeast-1","ap-southeast-2","ap-northeast-1","ca-central-1","eu-central-1","eu-west-1","eu-west-2","sa-east-1"]
-    if region in workspaces_regions:
-        print("### Starting Workspaces List for region: " + region + " ###")
-        workspacesclient = boto3.client('workspaces', region_name=region)
-        response = workspacesclient.describe_workspaces()
-        for workspace in response["Workspaces"]:
-            workspaces_list.append(workspace['WorkspaceId'] + " , " + region)
-            print(workspace['WorkspaceId'] + " , " + region)
-    else:
-        print("Workspaces not supported in " + region + ". Skipping")
+# No longer a billable resource
+    # ## Workspaces
+    # workspaces_regions = ["us-east-1","us-west-2","ap-northeast-2","ap-southeast-1","ap-southeast-2","ap-northeast-1","ca-central-1","eu-central-1","eu-west-1","eu-west-2","sa-east-1"]
+    # if region in workspaces_regions:
+    #     print("### Starting Workspaces List for region: " + region + " ###")
+    #     workspacesclient = boto3.client('workspaces', region_name=region)
+    #     response = workspacesclient.describe_workspaces()
+    #     for workspace in response["Workspaces"]:
+    #         workspaces_list.append(workspace['WorkspaceId'] + " , " + region)
+    #         print(workspace['WorkspaceId'] + " , " + region)
+    # else:
+    #     print("Workspaces not supported in " + region + ". Skipping")
 
 
     ## DocumentDB
@@ -111,8 +112,8 @@ rds_count = len(rds_list)
 redshift_cluster_count = len(redshift_cluster_list)
 elasticache_cluster_count = len(elasticache_cluster_list)
 dynamodb_cluster_count = len(dynamodb_table_list)
-elasticsearch_domain_count = len(elasticsearch_domain_list)
-workspaces_count = len(workspaces_list)
+# elasticsearch_domain_count = len(elasticsearch_domain_list)
+# workspaces_count = len(workspaces_list)
 documentdb_count = len(documentdb_list)
 # neptune_count = len(neptune_list)
 
@@ -123,12 +124,12 @@ print("RDS Instances in this account: " + str(rds_count))
 print("Redshift Clusters in this account: " + str(redshift_cluster_count))
 print("Elasticache Clusters in this account: " + str(elasticache_cluster_count))
 print("DynamoDB Clusters in this account: " + str(dynamodb_cluster_count))
-print("Elasticsearch Clusters in this account: " + str(elasticsearch_domain_count))
-print("Workspaces in this account: " + str(workspaces_count))
+# print("Elasticsearch Clusters in this account: " + str(elasticsearch_domain_count))
+# print("Workspaces in this account: " + str(workspaces_count))
 print("DocumentDBs in this account: " + str(documentdb_count))
 # print("Neptune DBs in this account: " + str(neptune_count))
 
-#total_counts_list = [instance_count,rds_count,redshift_cluster_count,elasticache_cluster_count,dynamodb_cluster_count,elasticsearch_domain_count,workspaces_count,documentdb_count,neptune_count]
-total_counts_list = [instance_count,rds_count,redshift_cluster_count,elasticache_cluster_count,dynamodb_cluster_count,elasticsearch_domain_count,workspaces_count,documentdb_count]
+# total_counts_list = [instance_count,rds_count,redshift_cluster_count,elasticache_cluster_count,dynamodb_cluster_count,elasticsearch_domain_count,workspaces_count,documentdb_count]
+total_counts_list = [instance_count,rds_count,redshift_cluster_count,elasticache_cluster_count,dynamodb_cluster_count,documentdb_count]
 total_count = sum(total_counts_list)
 print("\n### TOTAL BILLABLE RESOURCE COUNT: " + str(total_count))
